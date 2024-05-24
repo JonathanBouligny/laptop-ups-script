@@ -1,0 +1,10 @@
+# /usr/lib/systemd/system/sleep-on-powersupply-loss.service
+[Unit]
+Description=Puts the machine to sleep if it loses the power supply
+
+[Service]
+ExecStart=/usr/local/bin/sleep-on-powersupply-loss.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
