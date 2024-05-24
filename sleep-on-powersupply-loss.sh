@@ -5,17 +5,16 @@ while true; do
     power_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "state" | awk '{print $2}')
 
     if [ "$power_status" = "discharging" ]; then
-        # Put laptop to sleep, no-block (async) because we're sleeping and we wont have
-          time for the operation to return
+        # Put laptop to sleep, no block because we dont want to wait for a return status
         systemctl suspend --no-block
 
-        # Wait for suspend, Creates an error on screen without the sleep
+        # Wait for suspend to finish
         sleep 2
 
-        # Exit the loop to prevent multiple sleep triggers, triggered on wake up
+        # Exit loop to prevent multiple sleep triggers
         break
     fi
 
-    # Wait for 5 seconds before checking again
+    # Wait 5 seconds before checking again
     sleep 5
 done
