@@ -2,7 +2,7 @@
 
 while true; do
     # Check if the laptop is plugged in
-    power_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep -E "state|to full" | awk '{print $2}')
+    power_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "state" | awk '{print $2}')
 
     if [ "$power_status" = "discharging" ]; then
         # Put the laptop to sleep
