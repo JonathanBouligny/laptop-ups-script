@@ -5,7 +5,7 @@ while true; do
     power_status=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "state" | awk '{print $2}')
 
     if [ "$power_status" = "discharging" ]; then
-        # Put the laptop to sleep
+        # Put the laptop to sleep, no block so the script will continue running the next commands on awake
         systemctl suspend --no-block
 
         # Wait for a short duration to allow the suspend process to finish
