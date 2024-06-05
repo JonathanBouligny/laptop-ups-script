@@ -10,6 +10,6 @@ do
   # If the state contains the word charging then
   if [[ "$battery_state" = *"Discharging"* ]]; then
     # suspend the machine not allowing any other processes to block the suspension. Suspends immediately
-    systemctl suspend --no-block
+    systemctl suspend -i --no-block
   fi
 done
